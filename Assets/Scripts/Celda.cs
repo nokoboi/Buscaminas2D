@@ -49,10 +49,19 @@ public class Celda : MonoBehaviour
         if (this.bomb)
         {
             GetComponent<SpriteRenderer>().material.color = Color.red;
+            Generator.Instance.SetWinner(false);
+            Debug.Log("Has perdido el juego");
         }
         else
         {
             tmpText.text = Generator.Instance.getBombsAround(x,y).ToString();
+            Generator.Instance.addTest();
+
+            if((Generator.Instance.getWidth() * Generator.Instance.getHeight()) - Generator.Instance.getBombs() == Generator.Instance.getNTest() && Generator.Instance.winner)
+            {
+                
+                Debug.Log("Has ganado");
+            }
         }
     }
 

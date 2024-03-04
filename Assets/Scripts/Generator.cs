@@ -9,15 +9,17 @@ public class Generator : MonoBehaviour
     [SerializeField] private GameObject celda;
     [SerializeField] private int width, height;
     [SerializeField] private int nBombs;
-    [SerializeField] private Canvas canvas;
+    [SerializeField] public Canvas canvas;
 
     private GameObject[][] map;
+    public bool winner = true;
+    public int nTest = 0;
 
     private int x, y;
     // Start is called before the first frame update
     void Start()
     {
-        Instance = this;        
+        Instance = this;
     }
 
     public void EasyMap()
@@ -26,7 +28,7 @@ public class Generator : MonoBehaviour
         height = 5;
         nBombs = 3;
 
-        canvas.gameObject.active = false;
+        //canvas.gameObject.active = false;
         generateMap();
     }
 
@@ -36,7 +38,7 @@ public class Generator : MonoBehaviour
         height = 6;
         nBombs = 5;
 
-        canvas.gameObject.active = false;
+
         generateMap();
     }
 
@@ -46,9 +48,34 @@ public class Generator : MonoBehaviour
         height = 6;
         nBombs = 8;
 
-        canvas.gameObject.active = false;
         generateMap();
     }
+
+    public int getWidth()
+    {
+        return width;
+    }
+
+    public int getHeight()
+    {
+        return height;
+    }
+
+    public int getBombs()
+    {
+        return nBombs;
+    }
+
+    public int getNTest()
+    {
+        return nTest;
+    }
+
+    public void addTest()
+    {
+        nTest++;
+    }
+
 
     public void generateMap()
     {
@@ -142,4 +169,17 @@ public class Generator : MonoBehaviour
 
         return contador;
     }
+
+    public void Win(bool win)
+    {
+        win = winner;
+    }
+
+    public bool SetWinner(bool win)
+    {
+        return win = winner;
+    }
+
+    
+    
 }
