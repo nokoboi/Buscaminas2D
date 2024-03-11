@@ -10,6 +10,8 @@ public class Generator : MonoBehaviour
     [SerializeField] private int width, height;
     [SerializeField] private int nBombs;
     [SerializeField] public Canvas canvas;
+     public Canvas victoria;
+     public Canvas derrota;
 
     private GameObject[][] map;
     public bool winner = true;
@@ -180,6 +182,14 @@ public class Generator : MonoBehaviour
         return win = winner;
     }
 
-    
+    public void DestroyMap()
+    {
+        GameObject[] cuadrados = GameObject.FindGameObjectsWithTag("cuadrado");
+
+        foreach(GameObject cuadrado in cuadrados)
+        {
+            Destroy(cuadrado);
+        }
+    }
     
 }
